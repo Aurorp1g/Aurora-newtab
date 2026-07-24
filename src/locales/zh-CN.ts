@@ -193,6 +193,13 @@ export default {
     dynamic: "动态",
     default: "默认",
     onlineImageTitle: "在线图片链接",
+    dailyRandom: "每日随机",
+    dailyRandomDesc: "每天自动更换壁纸（从默认和动态壁纸中随机选择）",
+    dailyRandomType: "随机范围",
+    dailyRandomAll: "全部",
+    dailyRandomStatic: "仅静态壁纸",
+    dailyRandomDynamic: "仅动态壁纸",
+    dailyRandomApplied: "已为今日随机更换壁纸",
   },
 
   // 账号同步设置

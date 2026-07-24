@@ -71,13 +71,18 @@ export interface Settings {
 export interface WallpaperSettings {
   type: "default" | "local" | "url" | "bing" | "dynamic";
   url: string | null;
-  localData: string | null; // 单张本地图片 (兼容旧数据)
-  localImages: string[]; // 多张本地图片，每次随机显示一张
-  defaultIndex: number; // 默认静态壁纸索引
-  dynamicIndex: number; // 动态壁纸索引
+  localData: string | null;
+  localImages: string[];
+  defaultIndex: number;
+  dynamicIndex: number;
   blur: boolean;
   blurAmount: number;
   brightness: number;
+  dailyRandom: {
+    enabled: boolean;
+    lastDate: string | null;
+    selectedType: "default" | "dynamic" | "all";
+  };
 }
 
 // Bing 今日壁纸信息

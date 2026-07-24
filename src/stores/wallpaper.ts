@@ -153,15 +153,20 @@ const DEFAULT_WALLPAPER_URL = LOCAL_DEFAULT_WALLPAPER;
 
 export const useWallpaperStore = defineStore("wallpaper", () => {
   const settings = ref<WallpaperSettings>({
-    type: "default", // 默认使用静态壁纸
+    type: "default",
     url: null,
     localData: null,
     localImages: [],
-    defaultIndex: 0, // 默认索引 0 是本地壁纸
+    defaultIndex: 0,
     dynamicIndex: 0,
     blur: true,
     blurAmount: 30,
     brightness: 100,
+    dailyRandom: {
+      enabled: false,
+      lastDate: null,
+      selectedType: "all",
+    },
   });
 
   // 缓存后的壁纸 URL（用于显示已缓存的远程壁纸）
@@ -255,6 +260,15 @@ export const useWallpaperStore = defineStore("wallpaper", () => {
     // 不再默认使用动态壁纸，因为动态壁纸需要从 CDN 加载
     settings.value = stored;
 
+    // 确保 dailyRandom 字段存在
+    if (!settings.value.dailyRandom) {
+      settings.value.dailyRandom = {
+        enabled: false,
+        lastDate: null,
+        selectedType: "all",
+      };
+    }
+
     // 如果存储的类型是 bing，先尝试从缓存加载，然后后台更新
     if (stored.type === "bing") {
       // 立即加载缓存（如果有）
@@ -270,6 +284,9 @@ export const useWallpaperStore = defineStore("wallpaper", () => {
     if (stored.type === "local" && Array.isArray(stored.localImages) && stored.localImages.length > 0) {
       currentLocalIndex.value = Math.floor(Math.random() * stored.localImages.length);
     }
+
+    // 应用每日随机壁纸
+    await applyDailyRandomWallpaper();
 
     // 预加载并缓存当前壁纸
     await loadAndCacheCurrentWallpaper();
@@ -472,6 +489,96 @@ export const useWallpaperStore = defineStore("wallpaper", () => {
     }
   }
 
+  // 每日随机壁纸功能
+  async function applyDailyRandomWallpaper() {
+    const dailyRandom = settings.value.dailyRandom;
+    if (!dailyRandom.enabled) return;
+
+    const today = getTodayDateString();
+    if (dailyRandom.lastDate === today) {
+      console.log("[Daily Random] Already applied today, skipping");
+      return;
+    }
+
+    console.log("[Daily Random] Applying daily random wallpaper");
+
+    let newType: "default" | "dynamic";
+    let newIndex: number;
+
+    const selectedType = dailyRandom.selectedType;
+
+    if (selectedType === "all" || selectedType === "default") {
+      const defaultCount = DEFAULT_WALLPAPERS.length;
+      if (selectedType === "all") {
+        const dynamicCount = DYNAMIC_WALLPAPERS.length;
+        const totalCount = defaultCount + dynamicCount;
+        const randomIdx = Math.floor(Math.random() * totalCount);
+        if (randomIdx < defaultCount) {
+          newType = "default";
+          newIndex = randomIdx;
+        } else {
+          newType = "dynamic";
+          newIndex = randomIdx - defaultCount;
+        }
+      } else {
+        newType = "default";
+        newIndex = Math.floor(Math.random() * defaultCount);
+      }
+    } else {
+      newType = "dynamic";
+      newIndex = Math.floor(Math.random() * DYNAMIC_WALLPAPERS.length);
+    }
+
+    settings.value.type = newType;
+    if (newType === "default") {
+      settings.value.defaultIndex = newIndex;
+    } else {
+      settings.value.dynamicIndex = newIndex;
+    }
+    settings.value.dailyRandom.lastDate = today;
+
+    await saveWallpaper(settings.value);
+    console.log(`[Daily Random] Applied: ${newType} wallpaper, index: ${newIndex}`);
+  }
+
+  // 设置每日随机开关
+  async function setDailyRandomEnabled(enabled: boolean) {
+    if (!settings.value.dailyRandom) {
+      settings.value.dailyRandom = {
+        enabled: false,
+        lastDate: null,
+        selectedType: "all",
+      };
+    }
+    settings.value.dailyRandom.enabled = enabled;
+
+    if (enabled) {
+      settings.value.dailyRandom.lastDate = null;
+      await applyDailyRandomWallpaper();
+    }
+
+    await saveWallpaper(settings.value);
+  }
+
+  // 设置每日随机的壁纸类型
+  async function setDailyRandomType(type: "default" | "dynamic" | "all") {
+    if (!settings.value.dailyRandom) {
+      settings.value.dailyRandom = {
+        enabled: false,
+        lastDate: null,
+        selectedType: "all",
+      };
+    }
+    settings.value.dailyRandom.selectedType = type;
+
+    if (settings.value.dailyRandom.enabled) {
+      settings.value.dailyRandom.lastDate = null;
+      await applyDailyRandomWallpaper();
+    }
+
+    await saveWallpaper(settings.value);
+  }
+
   async function setBlur(blur: boolean) {
     settings.value.blur = blur;
     await saveWallpaper(settings.value);
@@ -498,6 +605,11 @@ export const useWallpaperStore = defineStore("wallpaper", () => {
       blur: true,
       blurAmount: 30,
       brightness: 100,
+      dailyRandom: {
+        enabled: false,
+        lastDate: null,
+        selectedType: "all",
+      },
     };
     currentLocalIndex.value = 0;
     bingWallpaper.value = null;
@@ -528,6 +640,9 @@ export const useWallpaperStore = defineStore("wallpaper", () => {
     setBlur,
     setBlurAmount,
     setBrightness,
+    applyDailyRandomWallpaper,
+    setDailyRandomEnabled,
+    setDailyRandomType,
     reset,
   };
 });

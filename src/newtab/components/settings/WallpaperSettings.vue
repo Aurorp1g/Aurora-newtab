@@ -242,6 +242,23 @@ function selectBingWallpaper() {
 function downloadBingWallpaper() {
   wallpaperStore.downloadBingWallpaper();
 }
+
+// 每日随机壁纸相关
+const dailyRandomEnabled = computed(() => {
+  return wallpaperStore.settings.dailyRandom?.enabled ?? false;
+});
+
+const dailyRandomType = computed(() => {
+  return wallpaperStore.settings.dailyRandom?.selectedType ?? "all";
+});
+
+function toggleDailyRandom() {
+  wallpaperStore.setDailyRandomEnabled(!dailyRandomEnabled.value);
+}
+
+function setDailyRandomType(type: "default" | "dynamic" | "all") {
+  wallpaperStore.setDailyRandomType(type);
+}
 </script>
 
 <template>
@@ -348,6 +365,49 @@ function downloadBingWallpaper() {
               </button>
               <span class="today-source">{{ t("wallpaperSettings.imageSource") }}</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 每日随机壁纸区域 -->
+      <section class="daily-random-section">
+        <div class="daily-random-header">
+          <div class="daily-random-info">
+            <h3 class="section-label">{{ t("wallpaperSettings.dailyRandom") }}</h3>
+            <p class="daily-random-desc">{{ t("wallpaperSettings.dailyRandomDesc") }}</p>
+          </div>
+          <button
+            class="toggle-switch"
+            :class="{ 'toggle-switch-active': dailyRandomEnabled }"
+            @click="toggleDailyRandom"
+          >
+            <span class="toggle-slider" />
+          </button>
+        </div>
+        <div v-if="dailyRandomEnabled" class="daily-random-options">
+          <span class="daily-random-type-label">{{ t("wallpaperSettings.dailyRandomType") }}:</span>
+          <div class="daily-random-type-buttons">
+            <button
+              class="type-btn"
+              :class="{ 'type-btn-active': dailyRandomType === 'all' }"
+              @click="setDailyRandomType('all')"
+            >
+              {{ t("wallpaperSettings.dailyRandomAll") }}
+            </button>
+            <button
+              class="type-btn"
+              :class="{ 'type-btn-active': dailyRandomType === 'default' }"
+              @click="setDailyRandomType('default')"
+            >
+              {{ t("wallpaperSettings.dailyRandomStatic") }}
+            </button>
+            <button
+              class="type-btn"
+              :class="{ 'type-btn-active': dailyRandomType === 'dynamic' }"
+              @click="setDailyRandomType('dynamic')"
+            >
+              {{ t("wallpaperSettings.dailyRandomDynamic") }}
+            </button>
           </div>
         </div>
       </section>
@@ -716,6 +776,121 @@ function downloadBingWallpaper() {
 .today-source {
   font-size: 12px;
   color: rgb(var(--color-text-muted));
+}
+
+/* ================================
+ * 每日随机壁纸区域
+ * ================================ */
+.daily-random-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background-color: rgb(var(--dialog-item-bg));
+  border-radius: 12px;
+  border: 1px solid rgb(var(--color-border) / 0.3);
+}
+
+.daily-random-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.daily-random-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.daily-random-info .section-label {
+  margin-bottom: 4px;
+}
+
+.daily-random-desc {
+  font-size: 13px;
+  color: rgb(var(--color-text-muted));
+  line-height: 1.4;
+  margin: 0;
+}
+
+.daily-random-options {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px solid rgb(var(--color-border) / 0.2);
+}
+
+.daily-random-type-label {
+  font-size: 13px;
+  color: rgb(var(--color-text-secondary));
+  flex-shrink: 0;
+}
+
+.daily-random-type-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.type-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgb(var(--color-text-secondary));
+  background-color: rgb(var(--color-border) / 0.2);
+  border: 1px solid rgb(var(--color-border) / 0.3);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.type-btn:hover {
+  background-color: rgb(var(--color-border) / 0.4);
+}
+
+.type-btn-active {
+  color: white;
+  background-color: rgb(var(--color-accent));
+  border-color: rgb(var(--color-accent));
+}
+
+.type-btn-active:hover {
+  background-color: rgb(var(--color-accent));
+  opacity: 0.9;
+}
+
+/* 切换开关样式 */
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  background-color: rgb(var(--color-border) / 0.5);
+  border: none;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.toggle-switch-active {
+  background-color: rgb(var(--color-accent));
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch-active .toggle-slider {
+  transform: translateX(22px);
 }
 
 /* ================================

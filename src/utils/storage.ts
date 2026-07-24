@@ -91,15 +91,20 @@ const DEFAULT_SETTINGS: Settings = {
 };
 
 const DEFAULT_WALLPAPER: WallpaperSettings = {
-  type: "default", // 默认使用本地静态壁纸
+  type: "default",
   url: null,
   localData: null,
   localImages: [],
-  defaultIndex: 0, // 索引 0 是本地默认壁纸
+  defaultIndex: 0,
   dynamicIndex: 0,
   blur: true,
   blurAmount: 30,
   brightness: 100,
+  dailyRandom: {
+    enabled: false,
+    lastDate: null,
+    selectedType: "all",
+  },
 };
 
 const DEFAULT_APPS: AppItem[] = [

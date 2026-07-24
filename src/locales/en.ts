@@ -193,6 +193,13 @@ export default {
     dynamic: "Dynamic",
     default: "Default",
     onlineImageTitle: "Online Image URL",
+    dailyRandom: "Daily Random",
+    dailyRandomDesc: "Automatically change wallpaper daily (random selection from default and dynamic wallpapers)",
+    dailyRandomType: "Random Range",
+    dailyRandomAll: "All",
+    dailyRandomStatic: "Static Only",
+    dailyRandomDynamic: "Dynamic Only",
+    dailyRandomApplied: "Random wallpaper applied for today",
   },
 
   // Sync Settings

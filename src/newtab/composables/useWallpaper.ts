@@ -21,6 +21,11 @@ export function useWallpaper() {
     blur: true,
     blurAmount: 30,
     brightness: 100,
+    dailyRandom: {
+      enabled: false,
+      lastDate: null,
+      selectedType: "all",
+    },
   });
 
   const loading = ref(false);

@@ -193,6 +193,13 @@ export default {
     dynamic: "動態",
     default: "預設",
     onlineImageTitle: "線上圖片連結",
+    dailyRandom: "每日隨機",
+    dailyRandomDesc: "每天自動更換桌布（從預設和動態桌布中隨機選擇）",
+    dailyRandomType: "隨機範圍",
+    dailyRandomAll: "全部",
+    dailyRandomStatic: "僅靜態桌布",
+    dailyRandomDynamic: "僅動態桌布",
+    dailyRandomApplied: "已為今日隨機更換桌布",
   },
 
   // 帳號同步設定
