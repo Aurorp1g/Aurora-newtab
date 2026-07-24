@@ -110,4 +110,4 @@ MIT License
 
 ## 作者
 
-Aurora
+Aurorp1g
