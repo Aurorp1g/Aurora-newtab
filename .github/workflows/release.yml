@@ -33,7 +33,7 @@ jobs:
           node-version: '24'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --registry=https://registry.npmmirror.com
 
       - name: Build ${{ matrix.browser }}
         run: |
