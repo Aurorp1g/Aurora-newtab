@@ -15,6 +15,7 @@ import {
   saveBingWallpaperCache,
   getTodayDateString,
 } from "@/utils/storage";
+import { STATIC_WALLPAPERS, DYNAMIC_WALLPAPERS as VIRTUAL_VIDEOS, DYNAMIC_WALLPAPER_THUMBNAILS as VIRTUAL_THUMBNAILS } from "virtual:wallpaper-list";
 
 // 检测是否在浏览器扩展环境中
 declare const chrome:
@@ -33,56 +34,22 @@ interface BingWallpaperResponse {
   error?: string;
 }
 
-// 本地默认壁纸（首次加载使用，无需网络）
 export const LOCAL_DEFAULT_WALLPAPER = "/wallpaper/static/default.png";
 
-// 动态获取静态壁纸列表（按文件名排序）
-function getStaticWallpapers(): string[] {
-  const wallpapers: string[] = [LOCAL_DEFAULT_WALLPAPER];
-  const modules = import.meta.glob("/public/wallpaper/static/*", { eager: true, query: "?url", import: "default" });
-  const paths = Object.keys(modules).sort();
-  for (const path of paths) {
-    const url = (modules[path] as string) || path.replace("/public", "");
-    if (!url.includes("default")) {
-      wallpapers.push(url);
-    }
-  }
-  return wallpapers;
-}
+export const DEFAULT_WALLPAPERS = [
+  LOCAL_DEFAULT_WALLPAPER,
+  ...STATIC_WALLPAPERS.filter(url => !url.includes("default")),
+];
 
-export const DEFAULT_WALLPAPERS = getStaticWallpapers();
+const dynamicWallpaperEntries: { video: string; thumbnail: string }[] = VIRTUAL_VIDEOS.map((video, i) => ({
+  video,
+  thumbnail: VIRTUAL_THUMBNAILS[i] || "",
+}));
 
-// 动态获取动态壁纸列表
-function getDynamicWallpapers(): { video: string; thumbnail: string }[] {
-  const modules = import.meta.glob("/public/wallpaper/dynamic/*", { eager: true, query: "?url", import: "default" });
-  const wallpapers: { video: string; thumbnail: string }[] = [];
-  const imageExts = [".jpg", ".jpeg", ".png", ".webp"];
+export { dynamicWallpaperEntries as DYNAMIC_WALLPAPER_LIST };
+export const DYNAMIC_WALLPAPERS = VIRTUAL_VIDEOS;
+export const DYNAMIC_WALLPAPER_THUMBNAILS = dynamicWallpaperEntries.map(w => w.thumbnail);
 
-  for (const path of Object.keys(modules)) {
-    const ext = path.split(".").pop()?.toLowerCase() || "";
-
-    if (ext === "mp4") {
-      const url = path.replace("/public", "");
-      let thumbnail = "";
-      for (const imgExt of imageExts) {
-        const thumbPath = path.replace(".mp4", `_thumb${imgExt}`);
-        if (modules[thumbPath]) {
-          thumbnail = (modules[thumbPath] as string) || thumbPath.replace("/public", "");
-          break;
-        }
-      }
-      wallpapers.push({ video: url, thumbnail });
-    }
-  }
-  return wallpapers;
-}
-
-const DYNAMIC_WALLPAPER_LIST = getDynamicWallpapers();
-
-export const DYNAMIC_WALLPAPERS = DYNAMIC_WALLPAPER_LIST.map(w => w.video);
-export const DYNAMIC_WALLPAPER_THUMBNAILS = DYNAMIC_WALLPAPER_LIST.map(w => w.thumbnail);
-
-// 获取动态壁纸的后备静态图
 export function getDynamicFallback(index: number): string {
   return DYNAMIC_WALLPAPER_THUMBNAILS[index] || DYNAMIC_WALLPAPER_THUMBNAILS[0];
 }

@@ -1,9 +1,56 @@
+/*
+ * @Description:
+ * @Author: Aurorp1g
+ * @Date: 2026-07-20
+ * @LastEditTime: 2026-07-24
+ * @LastEditors: Aurorp1g
+ */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import webExtension from "vite-plugin-web-extension";
 import { resolve } from "path";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import { compression } from "vite-plugin-compression2";
+import { readdirSync } from "fs";
+
+function virtualWallpaperList(): import("vite").Plugin {
+  return {
+    name: "virtual-wallpaper-list",
+    resolveId(id) {
+      if (id === "virtual:wallpaper-list") return id;
+    },
+    load(id) {
+      if (id !== "virtual:wallpaper-list") return;
+      const staticDir = resolve(__dirname, "public/wallpaper/static");
+      const dynamicDir = resolve(__dirname, "public/wallpaper/dynamic");
+
+      const staticFiles = readdirSync(staticDir)
+        .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f))
+        .sort()
+        .map(f => `/wallpaper/static/${f}`);
+
+      const imageExts = [".jpg", ".jpeg", ".png", ".webp"];
+      const dynamicFiles: { video: string; thumbnail: string }[] = [];
+      try {
+        const files = readdirSync(dynamicDir);
+        const videos = files.filter(f => /\.mp4$/i.test(f));
+        for (const video of videos) {
+          let thumbnail = "";
+          for (const imgExt of imageExts) {
+            const thumbPath = video.replace(".mp4", `_thumb${imgExt}`);
+            if (files.includes(thumbPath)) {
+              thumbnail = `/wallpaper/dynamic/${thumbPath}`;
+              break;
+            }
+          }
+          dynamicFiles.push({ video: `/wallpaper/dynamic/${video}`, thumbnail });
+        }
+      } catch {}
+
+      return `export const STATIC_WALLPAPERS = ${JSON.stringify(staticFiles)};\nexport const DYNAMIC_WALLPAPERS = ${JSON.stringify(dynamicFiles.map(d => d.video))};\nexport const DYNAMIC_WALLPAPER_THUMBNAILS = ${JSON.stringify(dynamicFiles.map(d => d.thumbnail))};`;
+    },
+  };
+}
 
 export default defineConfig(({ mode }) => {
   const browser = mode === "firefox" ? "firefox" : "chrome";
@@ -15,7 +62,7 @@ export default defineConfig(({ mode }) => {
         browser,
         manifest: "manifest.json",
       }),
-      // 复制静态壁纸
+      virtualWallpaperList(),
       viteStaticCopy({
         targets: [
           {
@@ -31,12 +78,10 @@ export default defineConfig(({ mode }) => {
             src: "public/site.webmanifest",
             dest: ".",
           },
-          // 复制静态壁纸
           {
             src: "public/wallpaper/static/*",
             dest: "wallpaper/static",
           },
-          // 复制动态壁纸（视频和缩略图）
           {
             src: "public/wallpaper/dynamic/*",
             dest: "wallpaper/dynamic",
@@ -54,7 +99,6 @@ export default defineConfig(({ mode }) => {
         threshold: 1024, // 只压缩大于 1KB 的文件
       }),
     ],
-    // 禁用默认 public 目录复制
     publicDir: false,
     resolve: {
       alias: {
