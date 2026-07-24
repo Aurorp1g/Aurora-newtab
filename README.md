@@ -8,8 +8,11 @@
 
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Aurorp1g/Aurora-newtab?style=flat-square)](https://github.com/Aurorp1g/Aurora-newtab/releases)
 [![License](https://img.shields.io/github/license/Aurorp1g/Aurora-newtab?style=flat-square)](LICENSE)
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/placeholder?style=flat-square)]()
-[![Firefox Add-ons](https://img.shields.io/firefox/addons/aurora-newtab?style=flat-square)]()
+[![Vue](https://img.shields.io/badge/Vue-3-4FC08D?style=flat-square&logo=vuedotjs)](https://vuejs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-38B2AC?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
+[![Pinia](https://img.shields.io/badge/Pinia-2-F7D795?style=flat-square)](https://pinia.vuejs.org)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite)](https://vitejs.dev)
 
 </div>
 
