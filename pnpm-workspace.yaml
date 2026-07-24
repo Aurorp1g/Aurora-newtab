@@ -1,5 +1,0 @@
-onlyBuiltDependencies:
-  - esbuild
-  - sharp
-  - spawn-sync
-  - vue-demi
