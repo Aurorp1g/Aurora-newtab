@@ -23,7 +23,7 @@ jobs:
         with:
           version: 9
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build ${{ matrix.browser }}
+      - name: Build
         run: |
           if [ "${{ matrix.browser }}" = "chrome" ]; then
             pnpm build
@@ -40,17 +40,16 @@ jobs:
             pnpm build:firefox
           fi
 
-      - name: Package extension
+      - name: Package
         run: |
           cd dist/${{ matrix.browser }}
-          zip -r ../${{ matrix.browser }}.zip .
+          zip -r ../../${{ matrix.browser }}.zip .
 
-      - name: Upload artifacts
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.browser }}-extension
-          path: dist/${{ matrix.browser }}.zip
-          retention-days: 30
+          name: ${{ matrix.browser }}
+          path: ${{ matrix.browser }}.zip
 
   release:
     needs: build
@@ -64,12 +63,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: artifacts
-          pattern: '*-extension'
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: artifacts/*-extension/*.zip
+          files: artifacts/**/*.zip
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
