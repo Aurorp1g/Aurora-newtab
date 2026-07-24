@@ -1,0 +1,44 @@
+{
+  "name": "Aurora-newtab",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Aurora起始页 - 一个精美且可自定义的浏览器起始页扩展",
+  "scripts": {
+    "dev": "vite dev",
+    "dev:firefox": "vite dev --mode firefox",
+    "dev:h5": "vite dev --config vite.config.h5.ts",
+    "build": "vite build",
+    "build:firefox": "vite build --mode firefox",
+    "build:h5": "vite build --config vite.config.h5.ts",
+    "build:all": "npm run build && npm run build:firefox && npm run build:h5",
+    "package": "pnpm build && node scripts/package.js",
+    "preview": "vite preview",
+    "preview:h5": "vite preview --config vite.config.h5.ts",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@iconify/vue": "^4.1.2",
+    "marked": "^17.0.1",
+    "pinia": "^2.2.6",
+    "vue": "^3.5.13",
+    "vue-draggable-plus": "^0.5.6",
+    "vue-i18n": "^11.2.2",
+    "webextension-polyfill": "^0.12.0"
+  },
+  "devDependencies": {
+    "@types/marked": "^6.0.0",
+    "@types/webextension-polyfill": "^0.12.1",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "archiver": "^7.0.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.16",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vite-plugin-compression2": "^2.4.0",
+    "vite-plugin-static-copy": "^3.1.4",
+    "vite-plugin-web-extension": "^4.3.1",
+    "vue-tsc": "^2.1.10"
+  }
+}

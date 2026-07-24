@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "Aurora Start Page",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "A beautiful and customizable browser start page with clock, search engines, shortcuts, wallpapers and themes.",
+    "description": "Extension description"
+  }
+}

@@ -1,0 +1,549 @@
+/*
+  * @Description: 设置表单统一样式文件
+  * @Author: Aurorp1g
+  * @Date: 2026-07-20
+  * @LastEditTime: 2026-07-24
+  * @LastEditors: Aurorp1g
+*/
+/* ================================
+ * Settings Form Unified Styles
+ * ================================ */
+
+/* Text Colors */
+.text-primary {
+  color: rgb(var(--color-text));
+}
+
+.text-secondary {
+  color: rgb(var(--color-text-secondary));
+}
+
+.text-muted {
+  color: rgb(var(--color-text-muted));
+}
+
+.text-accent {
+  color: rgb(var(--color-accent));
+}
+
+/* Backgrounds */
+.setting-item-bg {
+  background-color: rgb(var(--dialog-item-bg));
+}
+
+.info-bg {
+  background-color: rgb(var(--color-border) / 0.15);
+}
+
+/* Borders */
+.border-color {
+  border-color: rgb(var(--color-border) / 0.3);
+}
+
+.border-accent {
+  border-color: rgb(var(--color-accent));
+}
+
+/* ================================
+ * Toggle Switch - Unified Style
+ * ================================ */
+.toggle-switch {
+  position: relative;
+  width: 44px;
+  height: 26px;
+  border-radius: 26px;
+  background-color: rgb(var(--color-border));
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.toggle-switch:hover {
+  background-color: rgb(var(--color-text-muted) / 0.5);
+}
+
+.toggle-switch.toggle-on {
+  background-color: rgb(var(--color-accent));
+}
+
+.toggle-switch.toggle-on:hover {
+  background-color: rgb(var(--color-accent-hover));
+}
+
+.toggle-switch:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.toggle-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.toggle-switch.toggle-on .toggle-knob {
+  transform: translateX(18px);
+}
+
+/* ================================
+ * Custom Select - Unified Style
+ * ================================ */
+.custom-select {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0 12px;
+  height: 34px;
+  background-color: rgb(var(--dialog-item-bg));
+  border: 1px solid rgb(var(--color-border) / 0.4);
+  border-radius: 0.5rem;
+  color: rgb(var(--color-text-secondary));
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.custom-select:hover {
+  border-color: rgb(var(--color-border) / 0.7);
+  background-color: rgb(var(--color-border) / 0.05);
+}
+
+.custom-select:focus,
+.custom-select:active {
+  outline: none;
+  border-color: rgb(var(--color-accent));
+  box-shadow: 0 0 0 2px rgb(var(--color-accent) / 0.2);
+}
+
+/* Dropdown Menu */
+.custom-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgb(var(--dialog-item-bg));
+  border: 1px solid rgb(var(--color-border) / 0.3);
+  border-radius: 0.5rem;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  max-height: 264px;
+  overflow-y: auto;
+  padding: 6px;
+  transform-origin: top center;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0 12px;
+  height: 32px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgb(var(--color-text-secondary));
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  background: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 0.375rem;
+}
+
+.dropdown-item:hover {
+  background-color: rgb(var(--color-border) / 0.15);
+  color: rgb(var(--color-text));
+}
+
+.dropdown-item-active {
+  color: rgb(var(--color-accent));
+  background-color: rgb(var(--color-accent) / 0.1);
+  font-weight: 500;
+}
+
+.dropdown-item-active:hover {
+  background-color: rgb(var(--color-accent) / 0.15);
+}
+
+/* Dropdown transition */
+.dropdown-enter-active {
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropdown-leave-active {
+  transition: opacity 0.1s cubic-bezier(0.4, 0, 1, 1), transform 0.1s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.dropdown-enter-from {
+  opacity: 0;
+  transform: scaleY(0.9) translateY(-8px);
+}
+
+.dropdown-enter-to {
+  opacity: 1;
+  transform: scaleY(1) translateY(0);
+}
+
+.dropdown-leave-from {
+  opacity: 1;
+  transform: scaleY(1) translateY(0);
+}
+
+.dropdown-leave-to {
+  opacity: 0;
+  transform: scaleY(0.9) translateY(-8px);
+}
+
+/* ================================
+ * Input - Unified Style
+ * ================================ */
+.custom-input {
+  width: 100%;
+  padding: 0 12px;
+  height: 34px;
+  background-color: rgb(var(--dialog-item-bg));
+  border: 1px solid rgb(var(--color-border) / 0.4);
+  border-radius: 0.5rem;
+  color: rgb(var(--color-text-secondary));
+  font-size: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-input:hover {
+  border-color: rgb(var(--color-border) / 0.7);
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: rgb(var(--color-accent));
+  box-shadow: 0 0 0 2px rgb(var(--color-accent) / 0.2);
+}
+
+.custom-input::placeholder {
+  color: rgb(var(--color-text-muted));
+}
+
+/* ================================
+ * Button - Unified Style
+ * ================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  height: 34px;
+  background-color: rgb(var(--color-accent));
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: rgb(var(--color-accent-hover));
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  height: 34px;
+  background-color: rgb(var(--color-border) / 0.3);
+  color: rgb(var(--color-text-secondary));
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: rgb(var(--color-border) / 0.5);
+}
+
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  height: 34px;
+  background-color: transparent;
+  color: #ef4444;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* ================================
+ * Range Slider - Unified Style
+ * ================================ */
+.range-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgb(var(--color-border));
+  appearance: none;
+  cursor: pointer;
+}
+
+.range-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgb(var(--color-accent));
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease;
+}
+
+.range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.range-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgb(var(--color-accent));
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================
+ * Selection Card - Unified Style
+ * ================================ */
+.selection-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: rgb(var(--dialog-item-bg));
+  border: 2px solid rgb(var(--color-border) / 0.4);
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.selection-card:hover {
+  border-color: rgb(var(--color-border));
+}
+
+.selection-card.selection-card-active {
+  background: linear-gradient(135deg, rgb(var(--color-accent) / 0.08) 0%, rgb(var(--color-accent) / 0.12) 100%);
+  border-color: rgb(var(--color-accent));
+}
+
+.selection-card.selection-card-active:hover {
+  background: linear-gradient(135deg, rgb(var(--color-accent) / 0.1) 0%, rgb(var(--color-accent) / 0.15) 100%);
+  border-color: rgb(var(--color-accent-hover));
+}
+
+/* ================================
+ * Theme Option - Unified Style
+ * ================================ */
+.theme-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  background-color: rgb(var(--dialog-item-bg));
+  border: 2px solid rgb(var(--color-border) / 0.4);
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-option:hover {
+  border-color: rgb(var(--color-border));
+}
+
+.theme-option-active {
+  background: linear-gradient(135deg, rgb(var(--color-accent) / 0.08) 0%, rgb(var(--color-accent) / 0.12) 100%);
+  border-color: rgb(var(--color-accent));
+}
+
+.theme-option-active:hover {
+  background: linear-gradient(135deg, rgb(var(--color-accent) / 0.1) 0%, rgb(var(--color-accent) / 0.15) 100%);
+  border-color: rgb(var(--color-accent-hover));
+}
+
+.theme-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: all 0.25s ease;
+}
+
+.theme-option:not(.theme-option-active) .theme-icon {
+  color: rgb(var(--color-text-muted));
+}
+
+.theme-option:not(.theme-option-active):hover .theme-icon {
+  color: rgb(var(--color-text-secondary));
+}
+
+.theme-option-active .theme-icon {
+  color: rgb(var(--color-accent));
+  transform: scale(1.1);
+}
+
+.theme-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.theme-option:not(.theme-option-active) .theme-label {
+  color: rgb(var(--color-text-secondary));
+}
+
+.theme-option:not(.theme-option-active):hover .theme-label {
+  color: rgb(var(--color-text));
+}
+
+.theme-option-active .theme-label {
+  color: rgb(var(--color-accent));
+  font-weight: 600;
+}
+
+/* ================================
+ * Section Title - Unified Style
+ * ================================ */
+.section-title {
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(var(--color-text));
+}
+
+.section-description {
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: rgb(var(--color-text-muted));
+}
+
+/* ================================
+ * Setting Item - Unified Style
+ * ================================ */
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background-color: rgb(var(--dialog-item-bg));
+  border-radius: 0.5rem;
+}
+
+.setting-item-label {
+  flex: 1;
+  padding-right: 12px;
+}
+
+.setting-item-label .label-text {
+  font-size: 0.875rem;
+  color: rgb(var(--color-text-secondary));
+}
+
+.setting-item-label .label-description {
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: rgb(var(--color-text-muted));
+}
+
+/* ================================
+ * Upload Area - Unified Style
+ * ================================ */
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 32px 16px;
+  border: 2px dashed rgb(var(--color-border));
+  border-radius: 0.75rem;
+  color: rgb(var(--color-text-muted));
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-area:hover {
+  border-color: rgb(var(--color-accent));
+  color: rgb(var(--color-accent));
+}
+
+/* ================================
+ * Preview Area - Unified Style
+ * ================================ */
+.preview-area {
+  position: relative;
+  width: 100%;
+  height: 128px;
+  overflow: hidden;
+  background: rgb(var(--color-border) / 0.3);
+  border-radius: 0.75rem;
+}
+
+.preview-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================================
+ * Info Box - Unified Style
+ * ================================ */
+.info-box {
+  padding: 12px 16px;
+  background-color: rgb(var(--color-border) / 0.15);
+  border-radius: 0.75rem;
+}
+
+.info-box-accent {
+  background-color: rgb(var(--color-accent) / 0.1);
+}
+
+/* ================================
+ * Animation
+ * ================================ */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}

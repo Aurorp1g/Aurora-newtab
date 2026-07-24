@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "Aurora起始頁",
+    "description": "擴展名稱"
+  },
+  "extDescription": {
+    "message": "一個精美且可自訂的瀏覽器起始頁擴展。支援即時時鐘、多搜尋引擎、應用捷徑、桌布系統、主題切換、書籤整合等功能。",
+    "description": "擴展描述"
+  }
+}

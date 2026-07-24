@@ -1,0 +1,369 @@
+/*
+  * @Description: Tailwind 主样式文件，包含全局变量和基础样式
+  * @Author: Aurorp1g
+  * @Date: 2026-07-20
+  * @LastEditTime: 2026-07-24
+  * @LastEditors: Aurorp1g
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Base colors */
+  --color-bg: 255 255 255;
+  --color-surface: 255 255 255;
+  --color-text: 0 0 0;
+  --color-text-secondary: 51 51 51;
+  --color-text-muted: 100 100 100;
+  --color-border: 229 231 235;
+
+  /* Dialog colors */
+  --dialog-bg: 248 249 254;
+  --dialog-item-bg: 255 255 255;
+
+  /* Accent colors */
+  --color-accent: 55 123 247;
+  --color-accent-hover: 45 103 227;
+  --color-accent-light: 55 123 247 / 0.1;
+  --color-accent-ring: 55 123 247 / 0.3;
+
+  /* Dock active color */
+  --color-dock-active: 55 123 247;
+
+  /* Danger colors */
+  --color-danger: 239 68 68;
+  --color-danger-hover: 220 38 38;
+
+  /* Glass backgrounds */
+  --blur-bg: rgba(255, 255, 255, 0.75);
+  --dock-bg: rgba(255, 255, 255, 0.65);
+  --app-card-bg: rgba(255, 255, 255, 0.9);
+  --search-bg: rgba(255, 255, 255, 0.85);
+  --search-bg-default: #ffffff40;
+  --search-bg-hover: #fff9;
+  --search-bg-focus: #ffffffe6;
+  --search-text-default: rgba(255, 255, 255, 1);
+  --search-text-hover: #646464;
+  --search-shadow-default: #0000004d;
+  --search-text-focus: rgba(0, 0, 0, 0.9);
+  --search-shadow-hover: rgba(0, 0, 0, 0.2);
+  --search-history-bg: rgba(255, 255, 255, 0.85);
+  --search-history-item-hover: rgba(0, 0, 0, 0.04);
+  --search-engine-icon: #7f7f7f;
+  --search-btn-icon: #7f7f7f;
+  --search-placeholder-hover: #686868;
+  --button-bg: rgba(255, 255, 255, 0.8);
+  --dropdown-bg: 255 255 255;
+  --hover-bg: rgba(0, 0, 0, 0.04);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 8px 40px rgba(0, 0, 0, 0.12);
+
+  /* App name colors */
+  --app-name-color: rgba(255, 255, 255, 0.95);
+  --app-name-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 主题色 - 绿色 */
+.accent-green {
+  --color-accent: 74 222 128;
+  --color-accent-hover: 34 197 94;
+  --color-accent-light: 74 222 128 / 0.1;
+  --color-accent-ring: 74 222 128 / 0.3;
+  --color-dock-active: 74 222 128;
+}
+
+/* 主题色 - 青色 */
+.accent-cyan {
+  --color-accent: 96 212 248;
+  --color-accent-hover: 56 189 248;
+  --color-accent-light: 96 212 248 / 0.1;
+  --color-accent-ring: 96 212 248 / 0.3;
+  --color-dock-active: 96 212 248;
+}
+
+/* 主题色 - 紫色 */
+.accent-purple {
+  --color-accent: 167 139 250;
+  --color-accent-hover: 139 92 246;
+  --color-accent-light: 167 139 250 / 0.1;
+  --color-accent-ring: 167 139 250 / 0.3;
+  --color-dock-active: 167 139 250;
+}
+
+/* 主题色 - 红色 */
+.accent-red {
+  --color-accent: 248 113 113;
+  --color-accent-hover: 239 68 68;
+  --color-accent-light: 248 113 113 / 0.1;
+  --color-accent-ring: 248 113 113 / 0.3;
+  --color-dock-active: 248 113 113;
+}
+
+/* 主题色 - 蓝色 (默认) #3578F7 */
+.accent-blue {
+  --color-accent: 53 120 247;
+  --color-accent-hover: 43 100 227;
+  --color-accent-light: 53 120 247 / 0.1;
+  --color-accent-ring: 53 120 247 / 0.3;
+  --color-dock-active: 53 120 247;
+}
+
+.dark {
+  /* Base colors */
+  --color-bg: 30 30 30;
+  --color-surface: 45 45 45;
+  --color-text: 240 240 240;
+  --color-text-secondary: 160 160 160;
+  --color-text-muted: 120 120 120;
+  --color-border: 70 70 70;
+
+  /* Dialog colors */
+  --dialog-bg: 45 45 45;
+  --dialog-item-bg: 55 55 55;
+
+  /* Accent colors - same in dark mode */
+  --color-accent: 55 123 247;
+  --color-accent-hover: 65 133 255;
+  --color-accent-light: 55 123 247 / 0.15;
+  --color-accent-ring: 55 123 247 / 0.4;
+
+  /* Dock active color - same in dark mode */
+  --color-dock-active: 55 123 247;
+
+  /* Danger colors - same in dark mode */
+  --color-danger: 239 68 68;
+  --color-danger-hover: 220 38 38;
+
+  /* Glass backgrounds */
+  --blur-bg: rgba(30, 30, 30, 0.75);
+  --dock-bg: rgba(45, 45, 45, 0.65);
+  --app-card-bg: rgba(45, 45, 45, 0.9);
+  --search-bg: rgba(45, 45, 45, 0.85);
+  --search-bg-default: rgba(45, 45, 45, 0.4);
+  --search-bg-hover: rgba(45, 45, 45, 0.6);
+  --search-bg-focus: rgba(45, 45, 45, 0.95);
+  --search-text-default: rgba(255, 255, 255, 0.85);
+  --search-text-hover: rgba(255, 255, 255, 0.9);
+  --search-text-focus: rgba(255, 255, 255, 0.95);
+  --search-shadow-hover: rgba(0, 0, 0, 0.5);
+  --search-shadow-default: rgba(0, 0, 0, 0.3);
+  --search-history-bg: rgba(45, 45, 45, 0.85);
+  --search-history-item-hover: rgba(255, 255, 255, 0.06);
+  --search-engine-icon: #7f7f7f;
+  --search-btn-icon: #7f7f7f;
+  --search-placeholder-hover: #686868;
+  --button-bg: rgba(45, 45, 45, 0.8);
+  --dropdown-bg: 45 45 45;
+  --hover-bg: rgba(255, 255, 255, 0.06);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 8px 40px rgba(0, 0, 0, 0.35);
+
+  /* App name colors */
+  --app-name-color: rgba(255, 255, 255, 0.95);
+  --app-name-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+}
+
+/* Glass morphism utilities */
+@layer components {
+  .glass {
+    background: var(--blur-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-dock {
+    background: var(--dock-bg);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-card {
+    background: var(--app-card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .glass-search {
+    background: var(--search-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .settings-menu {
+    background: rgb(var(--dropdown-bg));
+    border-radius: 16px;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid rgb(var(--color-border) / 0.5);
+  }
+
+  .settings-item {
+    transition: all 0.15s ease;
+    border-radius: 10px;
+  }
+
+  .settings-item:hover {
+    background-color: var(--hover-bg);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+/* Input focus styles */
+input:focus {
+  outline: none;
+}
+
+/* Animation keyframes - 优化为更流畅的动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-slide-down {
+  animation: slideDown 0.2s ease-out;
+}
+
+.animate-slide-up-dock {
+  animation: slideUpFromBottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 减少移动端动画复杂度以提升性能 */
+/* 注意：已禁用此规则，因为部分 Windows 用户可能意外关闭了系统动画设置 */
+/* @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+} */
+
+/* 确保移动端滚动流畅 */
+.smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* 移动端安全区域适配 */
+@supports (padding: max(0px)) {
+  .safe-area-bottom {
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
+  }
+
+  .safe-area-top {
+    padding-top: max(8px, env(safe-area-inset-top));
+  }
+}
