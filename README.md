@@ -1,31 +1,35 @@
-# Aurora起始页
+# Aurora 起始页
+
+<div align="center">
+
+![Aurora](./screenshot/main.png)
 
 一个简洁、美观、可定制的浏览器起始页扩展。
 
-![Aurora起始页](https://upload-bbs.miyoushe.com/upload/2025/12/06/125766904/acb541e81c3c94cb544a4f7319f68dec_623702863569830232.png)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Aurorp1g/Aurora-newtab?style=flat-square)](https://github.com/Aurorp1g/Aurora-newtab/releases)
+[![License](https://img.shields.io/github/license/Aurorp1g/Aurora-newtab?style=flat-square)](LICENSE)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/placeholder?style=flat-square)]()
+[![Firefox Add-ons](https://img.shields.io/firefox/addons/aurora-newtab?style=flat-square)]()
 
-功能以及 UI 全部仿自[青柠起始页](https://www.limestart.cn/)，并在此基础上进行了优化和改进。
+</div>
 
-## 功能特点
+---
 
-- 🕐 **实时时钟** - 大字体显示当前时间
-- 🔍 **多搜索引擎** - 支持 Google、Bing、百度、DuckDuckGo、GitHub
-- 📱 **应用快捷方式** - 自定义添加常用网站，支持拖拽排序
-- 🖼️ **壁纸系统** - 支持本地上传、在线图片、Bing 每日壁纸
-- 🌓 **主题切换** - 浅色/深色/跟随系统
-- 🔖 **书签集成** - 快速导入浏览器书签
-- 🌐 **跨浏览器** - 支持 Chrome、Firefox、Edge
+## ✨ 功能特点
 
-## 技术栈
+| 功能 | 描述 |
+|------|------|
+| 🕐 **实时时钟** | 大字体显示当前时间，支持 12/24 小时制 |
+| 🔍 **多搜索引擎** | 支持 Google、Bing、百度、DuckDuckGo、GitHub |
+| 📱 **应用快捷方式** | 自定义添加常用网站，支持拖拽排序 |
+| 🖼️ **壁纸系统** | 支持本地上传、在线图片、Bing 每日壁纸 |
+| 🌓 **主题切换** | 浅色/深色/跟随系统 |
+| 🔖 **书签集成** | 快速导入浏览器书签 |
+| 🌐 **跨浏览器** | 支持 Chrome、Firefox、Edge |
 
-- Vue 3 + TypeScript
-- Vite + vite-plugin-web-extension
-- TailwindCSS
-- Pinia 状态管理
-- Iconify (Remix Design 图标)
-- webextension-polyfill
+---
 
-## 开发
+## 🚀 快速开始
 
 ### 安装依赖
 
@@ -56,7 +60,15 @@ pnpm build:firefox
 pnpm build:all
 ```
 
-## 安装扩展
+### 打包发布
+
+```bash
+pnpm package
+```
+
+---
+
+## 📦 安装扩展
 
 ### Chrome / Edge
 
@@ -71,7 +83,25 @@ pnpm build:all
 2. 点击「临时载入附加组件」
 3. 选择 `dist/firefox/manifest.json`
 
-## 项目结构
+---
+
+## 🛠️ 技术栈
+
+<div align="center">
+
+| 技术 | 用途 |
+|------|------|
+| Vue 3 + TypeScript | 前端框架 |
+| Vite | 构建工具 |
+| TailwindCSS | 样式框架 |
+| Pinia | 状态管理 |
+| Iconify | 图标库 |
+
+</div>
+
+---
+
+## 📂 项目结构
 
 ```
 Aurora-newtab/
@@ -82,32 +112,36 @@ Aurora-newtab/
 │   │   ├── components/      # UI 组件
 │   │   └── composables/     # 组合式函数
 │   ├── stores/              # Pinia stores
-│   ├── types/               # TypeScript 类型
-│   ├── styles/              # 全局样式
-│   └── utils/               # 工具函数
-├── icons/                   # 扩展图标
-├── manifest.json            # 扩展清单
+│   ├── types/                # TypeScript 类型
+│   ├── styles/               # 全局样式
+│   └── utils/                # 工具函数
+├── icons/                    # 扩展图标
+├── scripts/                  # 构建脚本
+├── public/                   # 静态资源
+├── manifest.json             # 扩展清单
 ├── vite.config.ts
 ├── tailwind.config.ts
 └── package.json
 ```
 
-## 自定义图标
+---
+
+## 🎨 自定义图标
 
 应用使用 [Iconify](https://iconify.design/) 图标库，默认使用 [Remix Design](https://remixicon.com/) 图标集。
 
 图标格式：`ri:icon-name`
 
-示例：
+---
 
-- `ri:home-line` - 首页
-- `ri:search-line` - 搜索
-- `ri:settings-3-line` - 设置
+## 📄 许可证
 
-## 许可证
+本项目基于 [MIT](LICENSE) 许可证开源。
 
-MIT License
+---
 
-## 作者
+<div align="center">
 
-Aurorp1g
+**如果对你有帮助，请点个 ⭐ Star 支持一下！**
+
+</div>
