@@ -28,6 +28,7 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+        working-directory: .
 
       - name: Build ${{ matrix.browser }}
         run: |
@@ -36,9 +37,11 @@ jobs:
           else
             pnpm build:firefox
           fi
+        working-directory: .
 
       - name: Package extension
         run: node scripts/package.js
+        working-directory: .
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
