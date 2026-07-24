@@ -486,7 +486,7 @@ packages:
     resolution: {integrity: sha512-htyl8TWnKL7K/ESFa1oW2UB5lVDxuF5DpM7tBi6Hu2LNL3mWkIzNLG6N4zoCUP1lCKNxWy/3iu8mS8MvToGd6w==}
     engines: {node: '>=12.22.0'}
 
-  '@pnpm/network.ca-file@1.0.0':
+  '@pnpm/network.ca-file@1.0.2':
     resolution: {integrity: sha512-YcPQ8a0jwYU9bTdJDpXjMi7Brhkr1mXsXrUJvjqM2mQDgkRiz8jFaQGOdaLxgjtUfQgZhKy/O3cG/YwmgKaxLA==}
     engines: {node: '>=12.22.0'}
 
@@ -789,7 +789,7 @@ packages:
       react-native-b4a:
         optional: true
 
-  balanced-match@1.0.0:
+  balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
   bare-events@2.8.2:
@@ -951,7 +951,7 @@ packages:
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
 
-  de-indent@1.0.0:
+  de-indent@1.0.2:
     resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
 
   debounce@1.2.1:
@@ -1768,7 +1768,7 @@ packages:
   stubborn-fs@2.0.0:
     resolution: {integrity: sha512-Y0AvSwDw8y+nlSNFXMm2g6L51rBGdAQT20J3YSOqxC53Lo3bjWRtr2BKcfYoAf352WYpsZSTURrA0tqhfgudPA==}
 
-  stubborn-utils@1.0.0:
+  stubborn-utils@1.0.2:
     resolution: {integrity: sha512-zOh9jPYI+xrNOyisSelgym4tolKTJCQd5GBhK0+0xJvcYDcwlOoxF/rnFKQ2KRZknXSG9jWAp66fwP6AxN9STg==}
 
   sucrase@3.35.1:
@@ -1861,7 +1861,7 @@ packages:
     resolution: {integrity: sha512-+dwUY4L35XFYEzE+OAL3sarJdUioVovq+8f7lcIJ7wnmnYQV5UD1Y/lcwaMSyaQ6Bj3JMj1XSTjZbNLHn/19yA==}
     engines: {node: '>=18'}
 
-  util-deprecate@1.0.0:
+  util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
   uuid@8.3.2:
@@ -2318,14 +2318,14 @@ snapshots:
 
   '@pnpm/config.env-replace@1.1.0': {}
 
-  '@pnpm/network.ca-file@1.0.0':
+  '@pnpm/network.ca-file@1.0.2':
     dependencies:
       graceful-fs: 4.2.10
 
   '@pnpm/npm-conf@2.3.1':
     dependencies:
       '@pnpm/config.env-replace': 1.1.0
-      '@pnpm/network.ca-file': 1.0.0
+      '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
 
   '@rollup/pluginutils@5.3.0(rollup@4.53.3)':
@@ -2467,7 +2467,7 @@ snapshots:
 
   '@vue/compiler-vue2@2.7.16':
     dependencies:
-      de-indent: 1.0.0
+      de-indent: 1.0.2
       he: 1.2.0
 
   '@vue/devtools-api@6.6.4': {}
@@ -2597,7 +2597,7 @@ snapshots:
 
   b4a@1.7.3: {}
 
-  balanced-match@1.0.0: {}
+  balanced-match@1.0.2: {}
 
   bare-events@2.8.2: {}
 
@@ -2624,12 +2624,12 @@ snapshots:
 
   brace-expansion@1.1.12:
     dependencies:
-      balanced-match: 1.0.0
+      balanced-match: 1.0.2
       concat-map: 0.0.1
 
   brace-expansion@2.0.2:
     dependencies:
-      balanced-match: 1.0.0
+      balanced-match: 1.0.2
 
   braces@3.0.3:
     dependencies:
@@ -2761,7 +2761,7 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  de-indent@1.0.0: {}
+  de-indent@1.0.2: {}
 
   debounce@1.2.1: {}
 
@@ -3317,7 +3317,7 @@ snapshots:
   postcss-selector-parser@6.1.2:
     dependencies:
       cssesc: 3.0.0
-      util-deprecate: 1.0.0
+      util-deprecate: 1.0.2
 
   postcss-value-parser@4.2.0: {}
 
@@ -3366,7 +3366,7 @@ snapshots:
       process-nextick-args: 2.0.1
       safe-buffer: 5.1.2
       string_decoder: 1.1.1
-      util-deprecate: 1.0.0
+      util-deprecate: 1.0.2
 
   readable-stream@4.7.0:
     dependencies:
@@ -3571,9 +3571,9 @@ snapshots:
 
   stubborn-fs@2.0.0:
     dependencies:
-      stubborn-utils: 1.0.0
+      stubborn-utils: 1.0.2
 
-  stubborn-utils@1.0.0: {}
+  stubborn-utils@1.0.2: {}
 
   sucrase@3.35.1:
     dependencies:
@@ -3695,7 +3695,7 @@ snapshots:
       semver: 7.7.3
       xdg-basedir: 5.1.0
 
-  util-deprecate@1.0.0: {}
+  util-deprecate@1.0.2: {}
 
   uuid@8.3.2: {}
 
