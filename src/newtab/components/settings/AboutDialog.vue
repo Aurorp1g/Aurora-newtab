@@ -19,9 +19,9 @@ const emit = defineEmits<{
 
 const version = "1.0.0";
 const links = computed(() => [
-  { label: t("about.github"), icon: "ri:github-fill", url: "https://github.com" },
+  { label: t("about.github"), icon: "ri:github-fill", url: "https://github.com/Aurorp1g/aurora-newtab" },
   { label: t("about.website"), icon: "ri:global-line", url: "https://Aurorp1g.github.io" },
-  { label: t("about.feedback"), icon: "ri:feedback-line", url: "https://github.com" },
+  { label: t("about.feedback"), icon: "ri:feedback-line", url: "https://github.com/Aurorp1g/aurora-newtab/issues" },
 ]);
 </script>
 
