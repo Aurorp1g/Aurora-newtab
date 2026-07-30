@@ -10,6 +10,11 @@ on:
         description: 'Version tag (e.g., v1.0.0)'
         required: true
         type: string
+      ref:
+        description: 'Git ref to build from (branch, tag, or commit SHA)'
+        required: true
+        default: 'master'
+        type: string
 
 jobs:
   build:
@@ -23,7 +28,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.version || github.ref }}
+          ref: ${{ inputs.ref || github.ref }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -75,6 +80,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.version || github.ref_name }}
+          name: ${{ inputs.version || github.ref_name }}
           files: artifacts/**/*.zip
           generate_release_notes: true
         env:
